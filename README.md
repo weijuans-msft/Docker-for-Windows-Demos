@@ -42,9 +42,9 @@ d-----         5/4/2018  10:15 AM                pki
 ```powershell
 PS C:\Program Files\docker\Docker\resources\kubernetes> .\stop.ps1
 
-PS C:\Program Files\docker\Docker\resources\kubernetes> .\start.ps1
-
 PS C:\Program Files\docker\Docker\resources\kubernetes> .\init.ps1
+
+PS C:\Program Files\docker\Docker\resources\kubernetes> .\start.ps1
 ```
 
 Confirm D4W is running for Windows Containers
