@@ -107,72 +107,7 @@ Ideally....
 
 But...
 
-Talk about getting a more recent Nano Server container build than what I have on my machine which is Server 2016 version -
-I could use the latest Insider build, but since my machine is a v1803 build, I can't use the default Insider build yet. The default latest one is actually a v1809 build.
-Let's go to this Nano container insider build site to check:
-https://hub.docker.com/r/microsoft/nanoserver-insider/tags/
-
-Let's use this build 10.0.17134.1.
-
-Ideally I could show deployments, services..
-But,... will only show pod..
-
-dism is: Deployment Image Servicing and Management (DISM)
 
 ```powershell
-PS C:\Program Files\docker\Docker\resources\kubernetes> kubectl run dismpod --restart=Never --image=microsoft/nanoserver-insider:10.0.17134.1 --command "C:\Windows\System32\dism.exe"
-pod "dismpod" created
-
-PS C:\Program Files\docker\Docker\resources\kubernetes> kubectl get all
-NAME      READY     STATUS              RESTARTS   AGE
-dismpod   0/1       ContainerCreating   0          6s
-
-NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   192.168.0.1   <none>        443/TCP   4m
-PS C:\Program Files\docker\Docker\resources\kubernetes> kubectl describe pod dismpod
-Name:         dismpod
-Namespace:    default
-Node:         minint-kbfrf4d/10.82.2.186
-Start Time:   Fri, 04 May 2018 14:39:50 -0700
-Labels:       run=dismpod
-Annotations:  <none>
-Status:       Pending
-IP:
-Containers:
-  dismpod:
-    Container ID:
-    Image:         microsoft/nanoserver-insider:10.0.17134.1
-    Image ID:
-    Port:          <none>
-    Host Port:     <none>
-    Command:
-      C:\Windows\System32\dism.exe
-    State:          Waiting
-      Reason:       ContainerCreating
-    Ready:          False
-    Restart Count:  0
-    Environment:    <none>
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-4bx85 (ro)
-Conditions:
-  Type           Status
-  Initialized    True
-  Ready          False
-  PodScheduled   True
-Volumes:
-  default-token-4bx85:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-4bx85
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  <none>
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type     Reason                 Age                From                     Message
-  ----     ------                 ----               ----                     -------
-  Normal   Scheduled              25s                default-scheduler        Successfully assigned dismpod to minint-kbfrf4d
-  Normal   SuccessfulMountVolume  24s                kubelet, minint-kbfrf4d  MountVolume.SetUp succeeded for volume "default-token-4bx85"
-  Warning  MissingClusterDNS      13s (x2 over 24s)  kubelet, minint-kbfrf4d  pod: "dismpod_default(abb35eff-4fe3-11e8-847c-00155de290e4)". kubelet does not have ClusterDNS IP configured and cannot create Pod using "ClusterFirst" policy. Falling back to "Default" policy.
-  Normal   Pulling                13s                kubelet, minint-kbfrf4d  pulling image "microsoft/nanoserver-insider:10.0.17134.1"
-PS C:\Program Files\docker\Docker\resources\kubernetes>
+PS C:\Program Files\docker\Docker\resources\kubernetes> kubectl run build2018 --replicas=5 --image=microsoft/nanoserver --command ping localhost
+```
